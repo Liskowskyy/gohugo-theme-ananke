@@ -208,7 +208,7 @@ profile = "https://twitter.com/%s"
 icon = "twitter" # font awesome brand icon name
 link = "https://twitter.com/intent/tweet/"
 [ananke.social.networks.twitter.particles]
-text = "description"
+text = "title"
 url = "permalink"
 
 [ananke.social.networks.whatsapp]
