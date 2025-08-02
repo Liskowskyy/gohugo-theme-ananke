@@ -7,11 +7,12 @@
     <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
-    {{ with .Params.image }}
-    <meta itemprop="image" content="{{ . | absURL }}" />
-    <meta property="og:image" content="{{ . | absURL }}" />
-    <meta name="twitter:image" content="{{ . | absURL }}" />
-    <meta name="twitter:image:src" content="{{ . | absURL }}" />
+    {{ with .Page.Resources.GetMatch .Params.image }}
+    {{ $image := .RelPermalink }}
+    <meta itemprop="image" content="{{ $image | absURL }}" />
+    <meta property="og:image" content="{{ $image | absURL }}" />
+    <meta name="twitter:image" content="{{ $image | absURL }}" />
+    <meta name="twitter:image:src" content="{{ $image | absURL }}" />
     {{ end }}
     {{ hugo.Generator }}
     {{ $production := hugo.IsProduction }}
